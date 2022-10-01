@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dungeon Notebook | Tome of Delving Character Notebook for 5E</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootswatch@5.2.1/dist/slate/bootstrap.min.css" rel="stylesheet"
+        crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        html {
+            background: #151515 url(images/black_on_transparent_background_1200x1200.png) no-repeat center center fixed;
+            -webkit-background-size: contain;
+            -moz-background-size: contain;
+            -o-background-size: contain;
+            background-size: contain;
+        }
+
+        .main {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        p {
+            font-size: 2em;
+            color: whitesmoke;
+        }
+
+        @media screen and (max-width: 767px) {
+            .main {
+                width: 85vw;
+            }
+
+            p {
+                font-size: 1.5em;
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            .main {
+                width: 600px;
+            }
+
+            p {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <p>Dear Visitor,</p>
+        <p>
+            Our webstore is closed. Fear not! You may be able to acquire a Tome of Delving
+            in the near future. There will be future printings once the Worldwide Paper
+            Shortage is resolved. However, the webstore will not re-open. <strong>All future
+                printings will be Kickstarter exclusives.</strong>
+            To be notified when the next Kickstarter goes live enter your email below.
+        </p>
+        <p>-Thanks!</p>
+        <div class="input-group mt-5 mb-5">
+            <span class="input-group-text" id="basic-addon1">@</span>
+            <input id="email" type="text" class="form-control" placeholder="Email address" aria-label="Email address"
+                aria-describedby="basic-addon1">
+            <button type="button" class="btn btn-primary" onclick="submitEmail()">Submit</button>
+        </div>
+    </div>
+</body>
+<script lang="javascript">
+    async function submitEmail() {
+        const emailField = document.getElementById("email");
+        const response = await axios.post("/", {
+            "email": emailField.value
+        });
+        console.log(`response: ${JSON.stringify(response.data, null, 2)}`);
+    }
+</script>
+</html>
