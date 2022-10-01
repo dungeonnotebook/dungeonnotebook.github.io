@@ -77,7 +77,7 @@
 <script lang="javascript">
     async function submitEmail() {
         const emailField = document.getElementById("email");
-        const response = await axios.post("/", {
+        const response = await axios.post("https://dt7r8xh2l8.execute-api.us-east-1.amazonaws.com/prod", {
             "email": emailField.value
         });
         console.log(`response: ${JSON.stringify(response.data, null, 2)}`);
